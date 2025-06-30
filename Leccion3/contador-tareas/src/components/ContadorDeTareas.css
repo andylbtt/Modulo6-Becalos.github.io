@@ -1,72 +1,85 @@
 /* src/components/ContadorDeTareas.css */
-
-.contenedor-tareas {
-  background-color: #fff0f6;
-  color: #333;
-  width: 90%;
-  max-width: 500px;
-  margin: 40px auto;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  font-family: 'Segoe UI', sans-serif;
-}
-
-.contenedor-tareas h1 {
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-  text-align: center;
-  color: #cc3366;
-}
-
-.formulario-tarea {
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f7f1f1;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
-.formulario-tarea input[type="text"],
-.formulario-tarea input[type="number"] {
-  padding: 10px;
-  font-size: 1rem;
-  border: 2px solid #ffd6e7;
-  border-radius: 8px;
-  background-color: #fff7fb;
+.contenedor {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(14, 124, 183, 0.796);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
 }
 
-.formulario-tarea button {
-  padding: 10px;
+h1 {
+  color: #147ab0;
+  margin-bottom: 1.5rem;
+}
+
+.formulario input[type="text"],
+.formulario input[type="number"] {
+  width: 90%;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
   font-size: 1rem;
-  background-color: #ff85b3;
-  color: white;
+}
+
+.formulario button {
+  background-color: #3180ca;
   border: none;
-  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  color: #fff;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.3s;
 }
 
-.formulario-tarea button:hover {
-  background-color: #ff5c99;
+.formulario button:hover {
+  background-color: #8fc8f3;
 }
 
-.lista-tareas {
+ul {
   list-style: none;
   padding: 0;
-  margin-top: 10px;
 }
 
-.lista-tareas li {
-  background-color: #fff7fb;
-  border: 1px solid #ffd6e7;
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 10px;
+li {
+  background-color: #9acdf4;
+  padding: 0.8rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
 }
 
-.tiempo-total {
-  margin-top: 20px;
-  text-align: center;
-  font-weight: bold;
-  color: #cc3366;
+li.completada {
+  text-decoration: line-through;
+  background-color: #d9d9d9;
+}
+
+.eliminar {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #cc2020;
+}
+
+h3 {
+  margin-top: 1.5rem;
+  color: #0f4192;
 }
