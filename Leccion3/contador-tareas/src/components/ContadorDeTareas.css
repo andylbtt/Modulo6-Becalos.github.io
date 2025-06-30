@@ -1,0 +1,72 @@
+/* src/components/ContadorDeTareas.css */
+
+.contenedor-tareas {
+  background-color: #fff0f6;
+  color: #333;
+  width: 90%;
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.contenedor-tareas h1 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #cc3366;
+}
+
+.formulario-tarea {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.formulario-tarea input[type="text"],
+.formulario-tarea input[type="number"] {
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #ffd6e7;
+  border-radius: 8px;
+  background-color: #fff7fb;
+}
+
+.formulario-tarea button {
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #ff85b3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.formulario-tarea button:hover {
+  background-color: #ff5c99;
+}
+
+.lista-tareas {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.lista-tareas li {
+  background-color: #fff7fb;
+  border: 1px solid #ffd6e7;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.tiempo-total {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: #cc3366;
+}
