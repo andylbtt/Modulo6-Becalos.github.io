@@ -1,29 +1,31 @@
 // src/App.jsx
-import { useReducer, useRef, useCallback, useEffect, useState } from "react";
-import "./App.css";
+import React, { useReducer, useRef, useEffect, useCallback } from 'react';
 
 const initialState = {
   count: 0,
-  history: JSON.parse(localStorage.getItem("historial")) || [],
+  history: [],
 };
 
 function reducer(state, action) {
   switch (action.type) {
-    case "increment":
+    case 'increment':
       return {
-        count: state.count + action.payload,
-        history: [...state.history, `+${action.payload} (Nuevo valor: ${state.count + action.payload})`],
+        count: state.count + action.value,
+        history: [...state.history, `+${action.value} (Nuevo valor: ${state.count + action.value})`],
       };
-    case "decrement":
+    case 'decrement':
       return {
         count: state.count - 1,
         history: [...state.history, `-1 (Nuevo valor: ${state.count - 1})`],
       };
-    case "reset":
+    case 'reset':
       return initialState;
-    case "undo":
+    case 'undo':
+      if (state.history.length === 0) return state;
+      const lastChange = state.history[state.history.length - 1];
+      const newCount = eval(`${state.count} - ${lastChange.startsWith('+') ? lastChange.slice(1).split(' ')[0] : `(${lastChange})`}`);
       return {
-        count: state.count + (state.history.at(-1)?.includes("-") ? 1 : -parseInt(state.history.at(-1))),
+        count: newCount,
         history: state.history.slice(0, -1),
       };
     default:
@@ -31,50 +33,47 @@ function reducer(state, action) {
   }
 }
 
-function App() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+export default function App() {
+  const [state, dispatch] = useReducer(reducer, () => {
+    const saved = localStorage.getItem('contadorState');
+    return saved ? JSON.parse(saved) : initialState;
+  });
+
+  const inputRef = useRef(null);
   const incrementBtnRef = useRef(null);
-  const [valor, setValor] = useState(1);
 
   useEffect(() => {
     incrementBtnRef.current.focus();
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("historial", JSON.stringify(state.history));
-  }, [state.history]);
+    localStorage.setItem('contadorState', JSON.stringify(state));
+  }, [state]);
 
   const handleIncrement = useCallback(() => {
-    dispatch({ type: "increment", payload: parseInt(valor) });
-  }, [valor]);
+    const value = parseInt(inputRef.current.value) || 1;
+    dispatch({ type: 'increment', value });
+    inputRef.current.value = '';
+  }, []);
 
   const handleDecrement = useCallback(() => {
-    dispatch({ type: "decrement" });
+    dispatch({ type: 'decrement' });
   }, []);
 
-  const handleUndo = useCallback(() => {
-    dispatch({ type: "undo" });
-  }, []);
+  const handleUndo = () => {
+    dispatch({ type: 'undo' });
+  };
 
   return (
-    <div className="contenedor pastel">
-      <h1>🧮 Contador con Hooks Avanzados</h1>
-      <h2>Valor actual: {state.count}</h2>
-      <input
-        type="number"
-        value={valor}
-        onChange={(e) => setValor(e.target.value)}
-        min="1"
-      />
-      <div className="botones">
-        <button ref={incrementBtnRef} onClick={handleIncrement}>
-          Incrementar
-        </button>
-        <button onClick={handleDecrement}>Decrementar</button>
-        <button onClick={() => dispatch({ type: "reset" })}>Reset</button>
-        <button onClick={handleUndo}>Deshacer</button>
-      </div>
-      <h3>Historial de cambios</h3>
+    <div className="container">
+      <h2>Contador: {state.count}</h2>
+      <input ref={inputRef} type="number" placeholder="Cantidad" />
+      <button ref={incrementBtnRef} onClick={handleIncrement}>+</button>
+      <button onClick={handleDecrement}>-</button>
+      <button onClick={() => dispatch({ type: 'reset' })}>Reset</button>
+      <button onClick={handleUndo}>Deshacer</button>
+
+      <h3>Historial de cambios:</h3>
       <ul>
         {state.history.map((entry, index) => (
           <li key={index}>{entry}</li>
@@ -83,5 +82,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

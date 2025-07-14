@@ -1,65 +1,59 @@
-/* App.css */
 body {
-  margin: 0;
+  background-color: #9612bb;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #fef6f9;
-  color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  min-height: 100vh;
-  padding-top: 3rem;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
-  background-color: #ffffff;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  max-width: 500px;
-  width: 100%;
+  max-width: 600px;
+  margin: 60px auto;
+  background-color: #fff0f6;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-h1, h2 {
-  margin-bottom: 1rem;
-  color: #ff4081;
+h2, h3 {
+  color: #4a4a4a;
+}
+
+input[type='number'] {
+  padding: 8px;
+  width: 100px;
+  margin-right: 10px;
+  border-radius: 8px;
+  border: 1px solid #d0a3c2;
+  background-color: #fff;
 }
 
 button {
-  margin: 0.5rem;
-  padding: 0.6rem 1rem;
+  padding: 10px 16px;
+  margin: 5px;
   border: none;
-  border-radius: 6px;
-  background-color: #ffb6c1;
-  color: white;
+  border-radius: 8px;
+  background-color: #ffb3c6;
+  color: #333;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #ff4d6d;
-}
-
-input[type="number"] {
-  padding: 0.5rem;
-  margin: 1rem 0;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  width: 80%;
+  background-color: #ffa4b1;
 }
 
 ul {
-  list-style: none;
+  list-style-type: square;
   padding: 0;
-  margin-top: 1rem;
   text-align: left;
 }
 
 li {
-  margin-bottom: 0.3rem;
-  background: #fce4ec;
-  padding: 0.5rem;
+  background-color: #ffe6ef;
+  margin: 5px 0;
+  padding: 8px;
   border-radius: 6px;
+  font-size: 0.95rem;
 }
